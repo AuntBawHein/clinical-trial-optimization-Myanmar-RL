@@ -958,3 +958,189 @@ In the second chart, I compared the trained agent to the random agent, and the r
 Even though both agents had similar ups and downs, the random agent sometimes got slightly higher rewards than the trained one.
 
 This tells me that my trained agent is not learning better than random guessing, so I should improve the training to help it perform better.
+
+ Step 9: Documentation and Reporting
+
+ I Explain What My Project Is About
+
+In this step, I explain my project in a simple way so that anyone reading it can understand what I did.
+
+I talk about what my goal was, how I worked on it, what results I got, and what I learned from it.
+
+ I Add Simple Comments to My Code
+
+Next, I go through my code and write small notes (comments) to explain what each part does.  
+
+This helps me and others understand my code later, even if we forget how it works.  
+
+Code 
+
+import pandas as pd
+
+# I load the data
+
+import numpy as np
+
+# I use numbers and random actions
+
+import matplotlib.pyplot as plt 
+
+# I make charts
+
+# I load the clinical trial data
+
+data = pd.read_csv('COVID clinical trials.csv')
+
+# I track rewards to see how my agent does
+
+rewards = []
+
+for _ in range(50): 
+
+# I run 50 episodes
+
+    total = 0
+    
+    for _ in range(20):
+    
+    # I let the agent act 20 times
+    
+        action = np.random.randint(0, 2)
+        
+        # I choose 0 or 1 randomly
+        
+        actual = data['Status'].sample().values[0] 
+        
+        # I randomly pick the real answer
+        
+        reward = 1 if action == actual else 0 
+        
+        # I give 1 point if correct
+        
+        total += reward
+        
+    rewards.append(total) 
+    
+    # I save the total reward
+
+# I show the results in a line chart
+
+plt.plot(rewards)
+
+plt.title("My Agent's Rewards Over Time")
+
+plt.xlabel("Episode")
+
+plt.ylabel("Reward")
+
+plt.grid(True)
+
+plt.show()
+
+Step 10: Asking and Answering Questions about the Project
+
+In this step, I think about how to make my project better and I talk with others to learn new ideas. 
+
+This helps me grow and improve my work.
+
+I Make My Project Better
+
+What does that mean?
+
+It means I try to improve my project by learning from my mistakes and listening to others.
+
+What do I do?
+
+I listen to feedback – When people give me suggestions, I use them to fix or improve my project.
+
+I add new ideas – I think of extra things I can include to make the project more useful.
+
+I change parts that don’t work well – If something isn’t going great, I try a new way.
+
+I test new things – I try out different ideas to see if they help the project work better.
+
+I Work Together With Others
+
+What does that mean?
+
+It means I don’t do everything alone. 
+
+I learn more when I talk to others and share what I’m doing.
+
+What do I do?
+
+I share my project – I show my project to others so they can give me advice.
+
+I help and get help – If someone needs help, I try to help them. And if I need help, I ask for it too.
+
+I keep learning – I stay curious and keep learning new ways to make my project better.
+
+By improving and working together, I can make my clinical trials project in Myanmar even more helpful and exciting.
+
+Q: Can you explain how your agent actually learns? Like what does it do first?
+
+A: Sure. My agent starts by making random choices and seeing what happens. 
+
+If the result is good, it gets a reward.
+Over time, it remembers which actions gave better rewards and starts making smarter decisions on its own.
+
+Q: Why did you use reinforcement learning instead of regular machine learning?
+
+A: Because clinical trials involve many steps and decisions.
+
+Reinforcement learning is perfect for this because it learns by doing, just like how we get better by practicing and learning from feedback.
+
+Q: What kind of results did you get? Was your agent successful?
+  
+A: My trained agent got some decent results, but in this version, it didn’t do much better than a random agent.
+  
+So the idea works, but I know there’s still room to improve it.
+
+Q: What would you do to make your project better next time?
+
+A: I’d use more realistic data, improve the reward system, and maybe try a different learning method like PPO.
+
+I’d also let it train longer so it can learn more deeply and perform better.
+
+Q: Where did you get your data from? Is it real?
+A: Yes, I used real clinical trial data from public COVID-19 datasets.
+
+I simplified the data a little so it would be easier for my agent to understand and learn from.
+
+Q: How did you measure success? How do you know it’s working?
+
+A: I looked at how much reward my agent earned in each trial.
+
+Then I compared it to a random agent that just guesses.
+
+If my agent gets higher rewards more often, that means it's learning.
+
+Q: What challenges did you face while doing this project and how did you fix them?
+
+A: One big challenge was building the environment and helping the agent understand it.
+
+At first, it just guessed randomly and didn’t learn.
+
+I fixed this by adjusting the rewards so the agent could see which actions were actually good.
+
+I also cleaned up my code and tested it step by step to make sure everything worked.
+
+Q: Could your model be used in real clinical trials in Myanmar?
+
+A: Not yet.
+
+This is just a small version.
+
+But it shows that reinforcement learning could help in the future, like testing ideas faster or helping doctors make better decisions.
+
+Q: How long did it take you to build this project?
+
+A: It took me a few weeks.
+
+I spent time learning about reinforcement learning, collecting and cleaning data, writing code, testing it, and making the charts and results.
+
+Q: What did you learn from doing this project, not just about the computer stuff, but for yourself?
+
+A: I learned how to be patient and not give up when something doesn’t work.
+
+I also found out that I really enjoy solving real problems with code, and now I want to keep learning more about machine learning.
